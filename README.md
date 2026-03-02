@@ -1,27 +1,51 @@
 # Agentic Privacy-First Data Analyst
 
-An agentic RAG (Retrieval-Augmented Generation) solution for performing professional statistical analysis without ever sending your raw data to an LLM.
+An agentic RAG (Retrieval-Augmented Generation) solution designed for professional statistical analysis. This tool allows you to leverage the reasoning power of Large Language Models (LLMs) without ever sending your raw, sensitive datasets to the cloud.
 
-## 🛡️ The Privacy-First Advantage
-Traditional AI data tools require you to upload your datasets to the cloud. This tool changes the paradigm:
-* **Local Data Execution:** Your raw CSV/Excel data stays on your machine.
-* **Metadata-Only Exchange:** Only column names (schema) are sent to the AI to plan the analysis.
-* **Local Validation:** A Python-based "Guardian" layer validates AI-generated code against your local data before execution.
-* **Safe Insights:** Only calculated results (not raw rows) are shared back for final report generation.
+## 🛡️ The Privacy-First Architecture
+Traditional AI data tools require uploading datasets to a third-party server. This tool uses a decoupled execution model to ensure maximum security:
+
+* **Local Data Execution:** Your raw CSV or Excel data remains strictly on your local machine.
+* **Metadata-Only Exchange:** Only column names and data types (schema) are shared with the LLM to plan the analytical approach.
+* **The "Guardian" Layer:** A Python-based validation step inspects AI-generated code, corrects column typos using fuzzy matching, and ensures safety before execution.
+* **Safe Insight Generation:** Only calculated numerical results (e.g., averages, trends, p-values) are sent back to the LLM for final report writing.
 
 ## 🚀 How It Works
-1. **Analyze Intent:** The AI "Brain" parses your natural language request (e.g., "Create a run chart for revenue").
-2. **Code Generation:** The AI writes specific Python instructions based on your data map.
-3. **Python Validation:** The system checks the code for errors and corrects column typos locally.
-4. **Local Execution:** Python runs the math and generates charts behind your firewall.
-5. **Analytical Reporting:** The AI interprets the results and writes a professional report.
+The system follows a sophisticated two-pass agentic workflow:
 
-## 🛠️ Tech Stack
-* **Orchestration:** OpenAI GPT-4o / Google Gemini.
-* **Interface:** Streamlit.
-* **Data Engine:** Pandas, Scipy, Matplotlib.
+1. **Intent Parsing:** The AI "Brain" identifies your request—whether it's a Run Chart, Time-Series Projection, or Descriptive Analysis.
+2. **Dynamic Code Creation:** The AI writes custom Python code tailored specifically to your data's unique column structure.
+3. **Execution & Capture:** Python executes the code locally, converting complex data types (like `int64` or `Timestamps`) into stable formats for reporting.
+4. **Analytical Reporting:** The AI interprets the local results to produce a professional, structured Analytical Report in Markdown.
 
-## 📋 Installation
-1. Clone the repository:
-   ```bash
-   git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
+
+
+## 📋 Installation & Setup
+
+### 1. Clone the Repository
+git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
+cd your-repo-name
+
+### 2. Set Up a Virtual Environment
+**Windows:**
+```bash
+ python -m venv venv
+ .\venv\Scripts\activate
+```
+**macOS/Linux:**
+```bash
+ python3 -m venv venv
+ source venv/bin/activate
+```
+### 3. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+### 4. Launch the App
+```bash
+streamlit run src/app.py
+```
+Run it in local browser (http://localhost:8501/)
+
+
+
