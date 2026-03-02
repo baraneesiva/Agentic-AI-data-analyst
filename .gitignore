@@ -1,0 +1,22 @@
+# Python virtual environment
+venv/
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Environment variables and secrets
+.env
+.streamlit/secrets.toml
+
+# IDE settings (optional, but recommended)
+.vscode/
+.idea/
+file structure.txt
+requirement file.docx
+README.md
+
+# OS files
+.DS_Store
